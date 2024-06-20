@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { CircularProgress, Typography, List, Container, Paper, Box } from '@mui/material';
-import PublisherListItem from './PublisherListItem.tsx';
-import { useListAllPublishers } from './hooks/useListAllPublishers.ts';
-import ErrorModal from "../../common/components/ErrorModal.tsx";
+import GameListItem from './GameListItem.tsx';
 
-const PublishersList: React.FC = () => {
-    const { publishers, loading, errorMessages, validationErrors } = useListAllPublishers();
+import ErrorModal from "../../common/components/ErrorModal.tsx";
+import {useGamesApi} from "./hooks/useListAllGamesApi.ts";
+
+const GamesList: React.FC = () => {
+    const { games, loading, errorMessages, validationErrors } = useGamesApi();
     const [errorModalOpen, setErrorModalOpen] = useState(false);
 
     React.useEffect(() => {
@@ -26,8 +27,8 @@ const PublishersList: React.FC = () => {
                 ) : (
                     <Paper elevation={3}>
                         <List>
-                            {publishers?.map((publisher) => (
-                                <PublisherListItem key={publisher.id} publisher={publisher} />
+                            {games?.map((game) => (
+                                <GameListItem key={game.id} game={game} />
                             ))}
                         </List>
                     </Paper>
@@ -42,4 +43,4 @@ const PublishersList: React.FC = () => {
     );
 };
 
-export default PublishersList;
+export default GamesList;

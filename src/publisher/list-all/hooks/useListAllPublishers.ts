@@ -3,7 +3,7 @@ import useApiRequest from '../../../common/api/useApiRequest.ts';
 import {PublisherResponse} from "../../common/PublisherResponse.ts";
 
 
-export const usePublishersApi = () => {
+export const useListAllPublishers = () => {
     const {
         data: publishers,
         loading,

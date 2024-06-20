@@ -6,8 +6,10 @@ import {
 } from "react-router-dom";
 
 import PublishersList from "./publisher/list-all/PublisherList.tsx";
-import ErrorPage from "./common/pages/ErrorPage.tsx";
 import CreatePublisher from "./publisher/create/CreatePublisher.tsx";
+import GamesList from "./game/list-all/GamesList.tsx";
+import CreateGame from "./game/create/CreateGame.tsx";
+import ErrorPage from "./common/pages/ErrorPage.tsx";
 
 const router = createBrowserRouter([
     {
@@ -18,6 +20,14 @@ const router = createBrowserRouter([
     {
         path: "/publishers/create",
         element: <CreatePublisher />,
+    },
+    {
+        path: "/games",
+        element: <GamesList />,
+    },
+    {
+        path: "/games/create",
+        element: <CreateGame />,
     }
 ]);
 

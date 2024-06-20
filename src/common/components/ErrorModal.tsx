@@ -1,5 +1,7 @@
+// src/components/ErrorModal.tsx
 import React from 'react';
-import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Button } from '@mui/material';
+import { Dialog, DialogTitle, DialogContent, DialogActions, Button, List, ListItem, ListItemText, ListItemIcon } from '@mui/material';
+import { FiberManualRecord } from '@mui/icons-material';
 
 interface ErrorModalProps {
     open: boolean;
@@ -12,9 +14,16 @@ const ErrorModal: React.FC<ErrorModalProps> = ({ open, errors, onClose }) => {
         <Dialog open={open} onClose={onClose}>
             <DialogTitle>Validation Errors</DialogTitle>
             <DialogContent>
-                {errors.map((error, index) => (
-                    <DialogContentText key={index}>{error}</DialogContentText>
-                ))}
+                <List>
+                    {errors.map((error, index) => (
+                        <ListItem key={index}>
+                            <ListItemIcon>
+                                <FiberManualRecord fontSize="small" />
+                            </ListItemIcon>
+                            <ListItemText primary={error} />
+                        </ListItem>
+                    ))}
+                </List>
             </DialogContent>
             <DialogActions>
                 <Button onClick={onClose} color="primary">Close</Button>

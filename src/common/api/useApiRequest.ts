@@ -1,3 +1,4 @@
+// src/common/api/useApiRequest.ts
 import axios from 'axios';
 import { useState, useCallback } from 'react';
 import axiosInstance from './axiosConfig';
@@ -53,7 +54,6 @@ function useApiRequest<T = unknown>(url: string, options?: RequestOptions<T>) {
         const validationErrors: string[] = [];
 
         if (errorResponse) {
-            if (errorResponse.title) errorMessages.push(errorResponse.title);
             if (errorResponse.errors) {
                 Object.values(errorResponse.errors).forEach(errorArray => {
                     validationErrors.push(...errorArray);
